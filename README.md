@@ -23,26 +23,6 @@ CasaAI is an AI-powered property management platform designed for real estate in
 4. **Pricing Page** (`/pricing`) - Four-tier pricing plans
 5. **Dashboard** (`/dashboard`) - Property management interface
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. Install dependencies:
-```bash
-npm install
-```
-
-2. Run the development server:
-```bash
-npm run dev
-```
-
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## 📁 Project Structure
 
 ```
