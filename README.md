@@ -48,7 +48,7 @@ npm run dev
 ```
 CasaAI/
 ├── src/
-│   ├── app/                    # Next.js App Router
+│   ├── app/                   # Next.js App Router
 │   │   ├── layout.tsx         # Root layout
 │   │   ├── page.tsx           # Home page
 │   │   ├── login/             # Login page
@@ -93,31 +93,6 @@ CasaAI/
 - **Core components** implemented for basic functionality
 - **Responsive design** for all screen sizes
 
-## 🔧 Configuration
-
-### Tailwind CSS
-The project uses Tailwind CSS with custom CSS variables for theming:
-- CSS variables for colors and spacing
-- Dark mode support
-- Custom animations and transitions
-
-### TypeScript
-- Strict type checking enabled
-- Path aliases configured (`@/*` points to `src/*`)
-- Next.js 14 App Router with TypeScript
-
-## 🚀 Deployment
-
-### Build for Production
-```bash
-npm run build
-```
-
-### Start Production Server
-```bash
-npm start
-```
-
 ## 📋 Implementation Status
 
 ### ✅ Completed
@@ -152,19 +127,3 @@ npm start
 - **Investment Tracking** - ROI calculations and market analysis
 - **Mobile App** - Native mobile experience
 - **AI Integration** - Smart property recommendations
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-Built with ❤️ using Next.js 14 and shadcn/ui
