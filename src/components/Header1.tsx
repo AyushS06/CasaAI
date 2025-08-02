@@ -125,12 +125,7 @@ return (
         </NavigationMenu>
         </div>
         <div className="flex lg:justify-center">
-        <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">C</span>
-            </div>
-            <span className="font-semibold">CasaAI</span>
-        </div>
+        <span className="font-semibold text-xl">CasaAI</span>
         </div>
         <div className="flex justify-end w-full gap-4">
         <Button variant="ghost" className="hidden md:inline" asChild>
