@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { Header1 } from '@/components/Header1'
 import { BackgroundBeams } from '@/components/BackgroundBeams'
 import { MacbookScroll } from '@/components/MacbookScroll'
+import { Analytics } from "@vercel/analytics/next"
+
 
 export default function HomePage() {
   return (
