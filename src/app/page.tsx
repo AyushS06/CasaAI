@@ -2,15 +2,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Header1 } from '@/components/Header1'
+import { BackgroundBeams } from '@/components/BackgroundBeams'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated Background */}
+      <BackgroundBeams className="opacity-30" />
+      
       {/* New Header Component */}
       <Header1 />
 
       {/* Hero Section - Adjusted for fixed header */}
-      <main className="container mx-auto px-4 py-16 mt-20">
+      <main className="container mx-auto px-4 py-16 mt-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Hero Content */}
           <div className="space-y-8">
@@ -36,7 +40,7 @@ export default function HomePage() {
 
           {/* Hero Graphics */}
           <div className="relative">
-            <Card className="p-8">
+            <Card className="p-8 bg-black/50 backdrop-blur-sm border-white/10">
               <CardHeader>
                 <CardTitle className="text-2xl">Dashboard Preview</CardTitle>
                 <CardDescription>
@@ -44,7 +48,7 @@ export default function HomePage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <div className="aspect-video bg-muted/20 rounded-lg flex items-center justify-center border border-white/10">
                   <div className="text-center space-y-2">
                     <div className="w-16 h-16 bg-primary/20 rounded-full mx-auto flex items-center justify-center">
                       <span className="text-primary text-2xl">🏠</span>
