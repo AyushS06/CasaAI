@@ -12,6 +12,7 @@ NavigationMenuTrigger,
 import { Menu, MoveRight, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { DayNightSwitch } from "@/components/DayNightSwitch";
 
 export const Header1 = () => {
 const navigationItems = [
@@ -127,7 +128,7 @@ return (
         <div className="flex lg:justify-center">
         <span className="font-semibold text-xl">CasaAI</span>
         </div>
-        <div className="flex justify-end w-full gap-4">
+        <div className="flex justify-end w-full gap-4 items-center">
         <Button variant="ghost" className="hidden md:inline" asChild>
             <Link href="/product">Book a demo</Link>
         </Button>
@@ -138,6 +139,7 @@ return (
         <Button asChild>
             <Link href="/signup">Get started</Link>
         </Button>
+        <DayNightSwitch className="hidden md:block" />
         </div>
         <div className="flex w-12 shrink lg:hidden items-end justify-end">
         <Button variant="ghost" onClick={() => setOpen(!isOpen)}>
@@ -175,6 +177,9 @@ return (
                 </div>
                 </div>
             ))}
+            <div className="flex justify-center">
+                <DayNightSwitch />
+            </div>
             </div>
         )}
         </div>
