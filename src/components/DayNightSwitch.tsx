@@ -10,6 +10,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { useTheme } from "./ThemeProvider";
 
 type DayNightSwitchProps = {
   defaultChecked?: boolean;
@@ -65,12 +66,19 @@ const createStarVariants = (index: number): Variants => ({
 const DayNightSwitch = React.forwardRef<HTMLDivElement, DayNightSwitchProps>(
   ({ className, defaultChecked = true, onToggle, ...restProps }, ref) => {
     const id = React.useId();
-    const [checked, setChecked] = React.useState<boolean>(defaultChecked);
+    const { theme, toggleTheme } = useTheme();
+    const [checked, setChecked] = React.useState<boolean>(theme === "light");
 
     const handleToggle = (newValue: boolean) => {
       setChecked(newValue);
+      toggleTheme(); // This will update the actual theme
       onToggle?.(newValue);
     };
+
+    // Update checked state when theme changes
+    React.useEffect(() => {
+      setChecked(theme === "light");
+    }, [theme]);
 
     const currentMode: AnimationMode = checked ? "day" : "night";
 
