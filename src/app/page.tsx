@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Header1 } from '@/components/animations/Header1'
 import { BackgroundBeams } from '@/components/animations/BackgroundBeams'
 import { ContainerScroll } from '@/components/animations/ContainerScroll'
+import { GoogleGeminiContainer } from '@/components/animations/google-gemini-container'
 import { Analytics } from "@vercel/analytics/next"
 
 export default function HomePage() {
@@ -15,32 +16,13 @@ export default function HomePage() {
       {/* New Header Component */}
       <Header1 />
 
-      {/* Hero Section - Adjusted for fixed header */}
-      <main className="container mx-auto px-4 py-16 mt-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          {/* Hero Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                Smart Property Management with{' '}
-                <span className="text-primary">AI</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                CasaAI helps real estate investors manage properties, track investments, and maximize returns with intelligent automation.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/signup">Get Started Free</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/product">Learn More</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </main>
+      {/* Google Gemini Effect Animation */}
+      <section className="relative z-10">
+        <GoogleGeminiContainer
+          title="AI-Powered Property Management"
+          description="Watch as our intelligent algorithms trace the path to smarter real estate investment"
+        />
+      </section>
 
       {/* Container Scroll Animation */}
       <section className="relative z-10">
@@ -107,6 +89,8 @@ export default function HomePage() {
           </div>
         </ContainerScroll>
       </section>
+
+      <Analytics />
     </div>
   )
 } 
