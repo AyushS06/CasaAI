@@ -12,7 +12,7 @@ NavigationMenuTrigger,
 import { Menu, MoveRight, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-import { DayNightSwitch } from "@/components/animations/DayNightSwitch";
+import { DayNightSwitch } from "@/components/DayNightSwitch";
 
 export const Header1 = () => {
 const navigationItems = [
