@@ -18,7 +18,7 @@ export const Header1 = () => {
 const navigationItems = [
     {
     title: "Home",
-    href: "/",
+    href: "/home",
     description: "",
     },
     {
@@ -60,8 +60,8 @@ const navigationItems = [
         href: "/support",
         },
         {
-        title: "Blog",
-        href: "/blog",
+        title: "Docs",
+        href: "https://docs.casaai.org/",
         },
     ],
     },

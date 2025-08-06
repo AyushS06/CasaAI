@@ -1,6 +1,3 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { Header1 } from '@/components/animations/Header1'
 import { BackgroundBeams } from '@/components/animations/BackgroundBeams'
 import { ContainerScroll } from '@/components/animations/ContainerScroll'
