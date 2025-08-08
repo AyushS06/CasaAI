@@ -62,6 +62,7 @@ const navigationItems = [
         {
         title: "Docs",
         href: "https://docs.casaai.org/",
+        external: true,
         },
     ],
     },
@@ -109,10 +110,22 @@ return (
                                 key={subItem.title}
                                 className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
                             >
-                                <Link href={subItem.href}>
-                                    <span>{subItem.title}</span>
-                                    <MoveRight className="w-4 h-4 text-muted-foreground" />
-                                </Link>
+                                {subItem.external ? (
+                                    <a 
+                                        href={subItem.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
+                                    >
+                                        <span>{subItem.title}</span>
+                                        <MoveRight className="w-4 h-4 text-muted-foreground" />
+                                    </a>
+                                ) : (
+                                    <Link href={subItem.href}>
+                                        <span>{subItem.title}</span>
+                                        <MoveRight className="w-4 h-4 text-muted-foreground" />
+                                    </Link>
+                                )}
                             </NavigationMenuLink>
                             ))}
                         </div>
@@ -163,16 +176,31 @@ return (
                     )}
                     {item.items &&
                     item.items.map((subItem) => (
-                        <Link
-                        key={subItem.title}
-                        href={subItem.href}
-                        className="flex justify-between items-center"
-                        >
-                        <span className="text-muted-foreground">
-                            {subItem.title}
-                        </span>
-                        <MoveRight className="w-4 h-4 stroke-1" />
-                        </Link>
+                        subItem.external ? (
+                            <a
+                                key={subItem.title}
+                                href={subItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex justify-between items-center"
+                            >
+                                <span className="text-muted-foreground">
+                                    {subItem.title}
+                                </span>
+                                <MoveRight className="w-4 h-4 stroke-1" />
+                            </a>
+                        ) : (
+                            <Link
+                                key={subItem.title}
+                                href={subItem.href}
+                                className="flex justify-between items-center"
+                            >
+                                <span className="text-muted-foreground">
+                                    {subItem.title}
+                                </span>
+                                <MoveRight className="w-4 h-4 stroke-1" />
+                            </Link>
+                        )
                     ))}
                 </div>
                 </div>
