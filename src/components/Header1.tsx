@@ -26,8 +26,8 @@ const navigationItems = [
     description: "AI-powered property management for real estate investors.",
     items: [
         {
-        title: "Dashboard",
-        href: "/dashboard",
+        title: "Use Cases",
+        href: "/usecases",
         },
         {
         title: "Features",
@@ -38,8 +38,8 @@ const navigationItems = [
         href: "/pricing",
         },
         {
-        title: "Analytics",
-        href: "/analytics",
+        title: "Changelog",
+        href: "/changelog",
         },
     ],
     },
@@ -60,8 +60,8 @@ const navigationItems = [
         href: "/support",
         },
         {
-        title: "Blog",
-        href: "/blog",
+        title: "Docs",
+        href: "https://docs.casaai.org/",
         },
     ],
     },
