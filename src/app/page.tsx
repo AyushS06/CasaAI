@@ -1,14 +1,15 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Header1 } from '@/components/Header1'
-import { BackgroundBeams } from '@/components/BackgroundBeams'
+import { AuroraBackground } from '@/components/AuroraBackground'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import SimplePricing from '@/components/sections/SimplePricing'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Animated Background */}
-      <BackgroundBeams className="opacity-30" />
+      <AuroraBackground className="absolute inset-0" />
       
       {/* Header */}
       <Header1 />
@@ -80,76 +81,7 @@ export default function HomePage() {
 
         {/* Pricing Section */}
         <section id="pricing" className="scroll-mt-28">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 space-y-3">
-              <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight">Pricing</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Simple, transparent pricing that grows with you.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="border-white/10">
-                <CardHeader>
-                  <CardTitle>Starter</CardTitle>
-                  <CardDescription>For getting started</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-4xl font-bold">$0</div>
-                  <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                    <li>Up to 10 units</li>
-                    <li>Basic analytics</li>
-                    <li>Email support</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full" asChild>
-                    <Link href="/signup">Start for free</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              <Card className="border-white/10">
-                <CardHeader>
-                  <CardTitle>Pro</CardTitle>
-                  <CardDescription>For growing portfolios</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-4xl font-bold">$49<span className="text-base font-normal">/mo</span></div>
-                  <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                    <li>Up to 100 units</li>
-                    <li>Advanced analytics</li>
-                    <li>Workflow automation</li>
-                    <li>Priority support</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full" asChild>
-                    <Link href="/signup">Upgrade</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              <Card className="border-white/10">
-                <CardHeader>
-                  <CardTitle>Enterprise</CardTitle>
-                  <CardDescription>Custom needs</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-4xl font-bold">Custom</div>
-                  <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                    <li>Unlimited units</li>
-                    <li>Dedicated success manager</li>
-                    <li>Custom integrations</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" className="w-full" asChild>
-                    <Link href="/contact">Contact sales</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </div>
+          <SimplePricing />
         </section>
       </main>
     </div>

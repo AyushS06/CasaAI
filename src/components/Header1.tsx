@@ -273,9 +273,10 @@ export const Header1 = () => {
   const items = [
     { name: "Home", link: "#home" },
     { name: "Product", link: "#product" },
-    { name: "Pricing", link: "#pricing" },
-    { name: "Changelog", link: "/changelog" },
+    { name: "Features", link: "#product" },
     { name: "Docs", link: "https://docs.casaai.org/" },
+    { name: "Changelog", link: "/changelog" },
+    { name: "Pricing", link: "/pricing" },
   ];
 
   return (
