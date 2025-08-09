@@ -1,217 +1,342 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-NavigationMenu,
-NavigationMenuContent,
-NavigationMenuItem,
-NavigationMenuLink,
-NavigationMenuList,
-NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { Menu, MoveRight, X } from "lucide-react";
-import { useState } from "react";
-import Link from "next/link";
+import React, { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import { IconMenu2, IconX } from "@tabler/icons-react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import { DayNightSwitch } from "@/components/DayNightSwitch";
 
-export const Header1 = () => {
-const navigationItems = [
-    {
-    title: "Home",
-    href: "/",
-    description: "",
-    },
-    {
-    title: "Product",
-    description: "AI-powered property management for real estate investors.",
-    items: [
-        {
-        title: "Use Cases",
-        href: "/usecases",
-        },
-        {
-        title: "Features",
-        href: "/features",
-        },
-        {
-        title: "Pricing",
-        href: "/pricing",
-        },
-        {
-        title: "Changelog",
-        href: "/changelog",
-        },
-    ],
-    },
-    {
-    title: "Company",
-    description: "Building the future of property management.",
-    items: [
-        {
-        title: "About us",
-        href: "/about",
-        },
-        {
-        title: "Contact",
-        href: "/contact",
-        },
-        {
-        title: "Support",
-        href: "/support",
-        },
-        {
-        title: "Docs",
-        href: "https://docs.casaai.org/",
-        external: true,
-        },
-    ],
-    },
-];
+interface NavbarProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
-const [isOpen, setOpen] = useState(false);
-return (
-    <header className="w-full z-40 fixed top-0 left-0 bg-background">
-    <div className="container relative mx-auto min-h-20 flex gap-4 flex-row lg:grid lg:grid-cols-3 items-center">
-        <div className="justify-start items-center gap-4 lg:flex hidden flex-row">
-        <NavigationMenu className="flex justify-start items-start">
-            <NavigationMenuList className="flex justify-start gap-4 flex-row">
-            {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.title}>
-                {item.href ? (
-                    <>
-                    <NavigationMenuLink asChild>
-                        <Link href={item.href}>
-                            <Button variant="ghost">{item.title}</Button>
-                        </Link>
-                    </NavigationMenuLink>
-                    </>
-                ) : (
-                    <>
-                    <NavigationMenuTrigger className="font-medium text-sm">
-                        {item.title}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent className="!w-[450px] p-4">
-                        <div className="flex flex-col lg:grid grid-cols-2 gap-4">
-                        <div className="flex flex-col h-full justify-between">
-                            <div className="flex flex-col">
-                            <p className="text-base">{item.title}</p>
-                            <p className="text-muted-foreground text-sm">
-                                {item.description}
-                            </p>
-                            </div>
-                            <Button size="sm" className="mt-10" asChild>
-                                <Link href="/signup">Get Started Free</Link>
-                            </Button>
-                        </div>
-                        <div className="flex flex-col text-sm h-full justify-end">
-                            {item.items?.map((subItem) => (
-                            <NavigationMenuLink
-                                asChild
-                                key={subItem.title}
-                                className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
-                            >
-                                {subItem.external ? (
-                                    <a 
-                                        href={subItem.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
-                                    >
-                                        <span>{subItem.title}</span>
-                                        <MoveRight className="w-4 h-4 text-muted-foreground" />
-                                    </a>
-                                ) : (
-                                    <Link href={subItem.href}>
-                                        <span>{subItem.title}</span>
-                                        <MoveRight className="w-4 h-4 text-muted-foreground" />
-                                    </Link>
-                                )}
-                            </NavigationMenuLink>
-                            ))}
-                        </div>
-                        </div>
-                    </NavigationMenuContent>
-                    </>
-                )}
-                </NavigationMenuItem>
-            ))}
-            </NavigationMenuList>
-        </NavigationMenu>
-        </div>
-        <div className="flex lg:justify-center">
-        <span className="font-semibold text-xl">CasaAI</span>
-        </div>
-        <div className="flex justify-end w-full gap-4 items-center">
-        <Button variant="ghost" className="hidden md:inline" asChild>
-            <Link href="/product">Book a demo</Link>
-        </Button>
-        <div className="border-r hidden md:inline"></div>
-        <Button variant="outline" asChild>
-            <Link href="/login">Sign in</Link>
-        </Button>
-        <Button asChild>
-            <Link href="/signup">Get started</Link>
-        </Button>
-        <DayNightSwitch className="hidden md:block" />
-        </div>
-        <div className="flex w-12 shrink lg:hidden items-end justify-end">
-        <Button variant="ghost" onClick={() => setOpen(!isOpen)}>
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </Button>
-        {isOpen && (
-            <div className="absolute top-20 border-t flex flex-col w-full right-0 bg-background shadow-lg py-4 container gap-8">
-            {navigationItems.map((item) => (
-                <div key={item.title}>
-                <div className="flex flex-col gap-2">
-                    {item.href ? (
-                    <Link
-                        href={item.href}
-                        className="flex justify-between items-center"
-                    >
-                        <span className="text-lg">{item.title}</span>
-                        <MoveRight className="w-4 h-4 stroke-1 text-muted-foreground" />
-                    </Link>
-                    ) : (
-                    <p className="text-lg">{item.title}</p>
-                    )}
-                    {item.items &&
-                    item.items.map((subItem) => (
-                        subItem.external ? (
-                            <a
-                                key={subItem.title}
-                                href={subItem.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex justify-between items-center"
-                            >
-                                <span className="text-muted-foreground">
-                                    {subItem.title}
-                                </span>
-                                <MoveRight className="w-4 h-4 stroke-1" />
-                            </a>
-                        ) : (
-                            <Link
-                                key={subItem.title}
-                                href={subItem.href}
-                                className="flex justify-between items-center"
-                            >
-                                <span className="text-muted-foreground">
-                                    {subItem.title}
-                                </span>
-                                <MoveRight className="w-4 h-4 stroke-1" />
-                            </Link>
-                        )
-                    ))}
-                </div>
-                </div>
-            ))}
-            <div className="flex justify-center">
-                <DayNightSwitch />
-            </div>
-            </div>
-        )}
-        </div>
+interface NavBodyProps {
+  children: React.ReactNode;
+  className?: string;
+  visible?: boolean;
+}
+
+interface NavItemsProps {
+  items: {
+    name: string;
+    link: string;
+  }[];
+  className?: string;
+  onItemClick?: () => void;
+}
+
+interface MobileNavProps {
+  children: React.ReactNode;
+  className?: string;
+  visible?: boolean;
+}
+
+interface MobileNavHeaderProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface MobileNavMenuProps {
+  children: React.ReactNode;
+  className?: string;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const Navbar = ({ children, className }: NavbarProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const [visible, setVisible] = useState<boolean>(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 100) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      className={cn(
+        // Make the navbar fixed at the top
+        "fixed inset-x-0 top-0 z-40 w-full",
+        className
+      )}
+    >
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(
+              child as React.ReactElement<{ visible?: boolean }>,
+              { visible }
+            )
+          : child
+      )}
+    </motion.div>
+  );
+};
+
+export const NavBody = ({ children, className, visible }: NavBodyProps) => {
+  return (
+    <motion.div
+      animate={{
+        backdropFilter: visible ? "blur(10px)" : "none",
+        boxShadow: visible
+          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          : "none",
+        width: visible ? "40%" : "100%",
+        y: visible ? 12 : 0,
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 50 }}
+      style={{ minWidth: "800px" }}
+      className={cn(
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between rounded-full bg-transparent px-4 py-2 lg:flex",
+        visible && "bg-white/80 dark:bg-neutral-950/80",
+        className
+      )}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+  const [hovered, setHovered] = useState<number | null>(null);
+
+  return (
+    <motion.div
+      onMouseLeave={() => setHovered(null)}
+      className={cn(
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        className
+      )}
+    >
+      {items.map((item, idx) => {
+        const isExternal = item.link.startsWith("http");
+        return isExternal ? (
+          <a
+            key={`link-${idx}`}
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        ) : (
+          <a
+            key={`link-${idx}`}
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+            href={item.link}
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        );
+      })}
+    </motion.div>
+  );
+};
+
+export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
+  return (
+    <motion.div
+      animate={{
+        backdropFilter: visible ? "blur(10px)" : "none",
+        boxShadow: visible
+          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          : "none",
+        width: visible ? "90%" : "100%",
+        paddingRight: visible ? "12px" : "0px",
+        paddingLeft: visible ? "12px" : "0px",
+        borderRadius: visible ? "4px" : "2rem",
+        y: visible ? 12 : 0,
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 50 }}
+      className={cn(
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
+        visible && "bg-white/80 dark:bg-neutral-950/80",
+        className
+      )}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export const MobileNavHeader = ({ children, className }: MobileNavHeaderProps) => {
+  return (
+    <div className={cn("flex w-full flex-row items-center justify-between", className)}>
+      {children}
     </div>
-    </header>
-);
+  );
+};
+
+export const MobileNavMenu = ({ children, className, isOpen, onClose }: MobileNavMenuProps) => {
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={cn(
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            className
+          )}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export const MobileNavToggle = ({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) => {
+  return isOpen ? (
+    <IconX className="text-black dark:text-white" onClick={onClick} />
+  ) : (
+    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+  );
+};
+
+export const NavbarLogo = () => {
+  return (
+    <a href="#" className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
+      <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
+        <span className="text-primary-foreground font-bold text-xs">C</span>
+      </div>
+      <span className="font-semibold text-black dark:text-white">CasaAI</span>
+    </a>
+  );
+};
+
+export const NavbarButton = ({
+  href,
+  as: Tag = "a",
+  children,
+  className,
+  variant = "primary",
+  ...props
+}: {
+  href?: string;
+  as?: React.ElementType;
+  children: React.ReactNode;
+  className?: string;
+  variant?: "primary" | "secondary" | "dark" | "gradient";
+} & (React.ComponentPropsWithoutRef<"a"> | React.ComponentPropsWithoutRef<"button">)) => {
+  const baseStyles =
+    "px-4 py-2 rounded-md bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+
+  const variantStyles = {
+    primary:
+      "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+    secondary: "bg-transparent shadow-none dark:text-white",
+    dark:
+      "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+    gradient:
+      "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
+  } as const;
+
+  return (
+    <Tag href={href || undefined} className={cn(baseStyles, variantStyles[variant], className)} {...props}>
+      {children}
+    </Tag>
+  );
+};
+
+// New Header implementation using the components above, keeping DayNightSwitch
+export const Header1 = () => {
+  const [open, setOpen] = useState(false);
+
+  const items = [
+    { name: "Home", link: "#home" },
+    { name: "Product", link: "#product" },
+    { name: "Pricing", link: "#pricing" },
+    { name: "Changelog", link: "/changelog" },
+    { name: "Docs", link: "https://docs.casaai.org/" },
+  ];
+
+  return (
+    <Navbar>
+      {/* Desktop */}
+      <NavBody>
+        <div className="flex w-full items-center justify-between">
+          <div className="flex items-center">
+            <NavbarLogo />
+          </div>
+
+          <NavItems items={items} />
+
+          <div className="relative z-20 flex items-center gap-3">
+            <NavbarButton href="/login" variant="secondary">Sign in</NavbarButton>
+            <NavbarButton href="/signup" variant="gradient">Get started</NavbarButton>
+            <DayNightSwitch />
+          </div>
+        </div>
+      </NavBody>
+
+      {/* Mobile */}
+      <MobileNav>
+        <MobileNavHeader>
+          <NavbarLogo />
+          <div className="flex items-center gap-3">
+            <DayNightSwitch />
+            <MobileNavToggle isOpen={open} onClick={() => setOpen((v) => !v)} />
+          </div>
+        </MobileNavHeader>
+        <MobileNavMenu isOpen={open} onClose={() => setOpen(false)}>
+          <div className="flex w-full flex-col gap-2">
+            {items.map((item) =>
+              item.link.startsWith("http") ? (
+                <a
+                  key={item.name}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 text-sm text-neutral-700 dark:text-neutral-300"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.link}
+                  className="px-3 py-2 text-sm text-neutral-700 dark:text-neutral-300"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.name}
+                </a>
+              )
+            )}
+            <div className="mt-2 flex gap-2">
+              <NavbarButton href="/login" variant="secondary" className="w-full">Sign in</NavbarButton>
+              <NavbarButton href="/signup" variant="gradient" className="w-full">Get started</NavbarButton>
+            </div>
+          </div>
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
+  );
 }; 
