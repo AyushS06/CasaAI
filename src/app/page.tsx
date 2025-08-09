@@ -79,10 +79,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="scroll-mt-28">
-          <SimplePricing />
-        </section>
+        {/* Pricing moved to dedicated page: /pricing */}
       </main>
     </div>
   )

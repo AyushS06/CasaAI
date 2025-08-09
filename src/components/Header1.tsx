@@ -274,9 +274,9 @@ export const Header1 = () => {
     { name: "Home", link: "#home" },
     { name: "Product", link: "#product" },
     { name: "Features", link: "#product" },
-    { name: "Docs", link: "https://docs.casaai.org/" },
-    { name: "Changelog", link: "/changelog" },
     { name: "Pricing", link: "/pricing" },
+    { name: "Changelog", link: "/changelog" },
+    { name: "Docs", link: "https://docs.casaai.org/" },
   ];
 
   return (

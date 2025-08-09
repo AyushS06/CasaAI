@@ -1077,6 +1077,9 @@ video {
 .min-w-full {
   min-width: 100%;
 }
+.min-w-\[8rem\] {
+  min-width: 8rem;
+}
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1166,6 +1169,9 @@ video {
 }
 .cursor-grabbing {
   cursor: grabbing;
+}
+.cursor-default {
+  cursor: default;
 }
 .select-none {
   -webkit-user-select: none;
@@ -1652,6 +1658,9 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pl-8 {
+  padding-left: 2rem;
 }
 .text-left {
   text-align: left;
