@@ -4,6 +4,7 @@ import { Header1 } from '@/components/Header1'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import SimplePricing from '@/components/sections/SimplePricing'
+import FAQSection from '@/components/sections/FAQSection'
 
 export default function HomePage() {
   return (
@@ -76,6 +77,19 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="scroll-mt-28">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 space-y-3">
+              <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight">Frequently Asked Questions</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Find answers to common questions about CasaAI.
+              </p>
+            </div>
+            <FAQSection />
           </div>
         </section>
 
