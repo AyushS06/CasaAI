@@ -271,9 +271,9 @@ export const Header1 = () => {
   const [open, setOpen] = useState(false);
 
   const items = [
-    { name: "Home", link: "#home" },
-    { name: "Product", link: "#product" },
-    { name: "Features", link: "#product" },
+    { name: "Home", link: "/home" },
+    { name: "Product", link: "/product" },
+    { name: "Features", link: "/features" },
     { name: "Pricing", link: "/pricing" },
     { name: "Changelog", link: "/changelog" },
     { name: "Docs", link: "https://docs.casaai.org/" },
