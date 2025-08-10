@@ -12,7 +12,7 @@ import {
   Accordion09Header,
   Accordion09Item,
   Accordion09Trigger,
-} from '@/components/ui/shadcn-io/accordion-09';
+} from '@/components/ui/shadcn-io/accordion-09/index';
 
 const items = [
   {
