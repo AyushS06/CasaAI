@@ -13,6 +13,7 @@ function addVariablesForColors({ addBase, theme }: any) {
 }
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -24,6 +25,7 @@ const config: Config = {
       animation: {
         moveUp: 'moveUp 1.4s ease forwards',
         appear: 'appear 1s 1s forwards',
+        aurora: 'aurora 60s linear infinite',
       },
       keyframes: {
         moveUp: {
@@ -33,6 +35,14 @@ const config: Config = {
         appear: {
           from: { opacity: '0' },
           to: { opacity: '1' }
+        },
+        aurora: {
+          from: {
+            backgroundPosition: '50% 50%,50% 50%',
+          },
+          to: {
+            backgroundPosition: '350% 50%,350% 50%',
+          },
         }
       }
     }
@@ -50,7 +60,8 @@ const config: Config = {
         },
         { values: flattenColorPalette(theme('backgroundColor')), type: 'color' }
       )
-    }
+    },
+    require("tailwindcss-animate")
   ]
 }
 export default config
