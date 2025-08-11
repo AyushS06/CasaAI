@@ -3,9 +3,16 @@ import Link from 'next/link'
 import { Header1 } from '@/components/Header1'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import SimplePricing from '@/components/sections/SimplePricing'
-import FAQSection from '@/components/sections/FAQSection'
-import { FeaturesSection } from '@/components/sections/FeaturesSection'
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for better bundle splitting
+const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
+  loading: () => <div className="animate-pulse">Loading FAQ...</div>
+})
+
+const FeaturesSection = dynamic(() => import('@/components/sections/FeaturesSection').then(mod => ({ default: mod.FeaturesSection })), {
+  loading: () => <div className="animate-pulse">Loading Features...</div>
+})
 
 export default function HomePage() {
   return (
@@ -82,7 +89,7 @@ export default function HomePage() {
         </section>
 
         {/* Features Section */}
-        <section className="scroll-mt-28">
+        <section id="features" className="scroll-mt-28">
           <FeaturesSection />
         </section>
 
