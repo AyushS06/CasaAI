@@ -1,4 +1,4 @@
-import { Header1 } from '@/components/Header1'
+import { Header1 } from '@/components/Header'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import SimplePricing from '@/components/sections/SimplePricing'
 

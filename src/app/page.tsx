@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { Header1 } from '@/components/Header1'
+import { Header1 } from '@/components/Header'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import dynamic from 'next/dynamic'
