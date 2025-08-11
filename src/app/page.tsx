@@ -3,15 +3,13 @@ import Link from 'next/link'
 import { Header1 } from '@/components/Header'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
+import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
 import dynamic from 'next/dynamic'
 
 // Dynamic imports for better bundle splitting
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
   loading: () => <div className="animate-pulse">Loading FAQ...</div>
-})
-
-const FeaturesSection = dynamic(() => import('@/components/sections/FeaturesSection').then(mod => ({ default: mod.FeaturesSection })), {
-  loading: () => <div className="animate-pulse">Loading Features...</div>
 })
 
 export default function HomePage() {
@@ -28,13 +26,7 @@ export default function HomePage() {
         <section id="home" className="scroll-mt-28">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className="space-y-6">
-              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                 Manage properties anytime & anywhere with {' '}
-                <span className="text-primary">CasaAI</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                CasaAI helps real estate investors manage properties, track investments, and maximize returns with intelligent automation.
-              </p>
+              <TextGenerateEffectDemo />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -56,41 +48,8 @@ export default function HomePage() {
                 Everything you need to operate and scale your property portfolio.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Portfolio Overview</CardTitle>
-                  <CardDescription>Unified view of properties, performance, and KPIs.</CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  Monitor occupancy, cash flow, and expenses in real time with clear trend insights.
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Automated Workflows</CardTitle>
-                  <CardDescription>Save time with AI-assisted operations.</CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  Automate reminders, rent roll, maintenance triage, and investor updates.
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Analytics</CardTitle>
-                  <CardDescription>Make better decisions with rich analytics.</CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  Underwrite, compare scenarios, and track returns across markets and assets.
-                </CardContent>
-              </Card>
-            </div>
+            <PointerHighlightDemo />
           </div>
-        </section>
-
-        {/* Features Section */}
-        <section id="features" className="scroll-mt-28">
-          <FeaturesSection />
         </section>
 
         {/* FAQ Section */}
