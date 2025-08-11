@@ -21,8 +21,20 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("dark"); // Default to dark mode
+  const [mounted, setMounted] = useState(false);
+
+  // Load theme from localStorage on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("casaai-theme") as Theme;
+    if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+      setTheme(savedTheme);
+    }
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
     // Apply theme to document
     const root = document.documentElement;
     if (theme === "dark") {
@@ -68,11 +80,19 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       root.style.setProperty("--input", "214.3 31.8% 91.4%");
       root.style.setProperty("--ring", "221.2 83.2% 53.3%");
     }
-  }, [theme]);
+
+    // Save theme to localStorage
+    localStorage.setItem("casaai-theme", theme);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === "light" ? "dark" : "light");
   };
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return <div style={{ visibility: 'hidden' }}>{children}</div>;
+  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -66,7 +66,20 @@ const createStarVariants = (index: number): Variants => ({
 const DayNightSwitch = React.forwardRef<HTMLDivElement, DayNightSwitchProps>(
   ({ className, defaultChecked = true, onToggle, ...restProps }, ref) => {
     const id = React.useId();
-    const { theme, toggleTheme } = useTheme();
+    
+    // Add safety check for theme context
+    let theme = "dark";
+    let toggleTheme = () => {};
+    
+    try {
+      const themeContext = useTheme();
+      theme = themeContext.theme;
+      toggleTheme = themeContext.toggleTheme;
+    } catch (error) {
+      // Theme context not available yet, use defaults
+      console.warn("Theme context not available, using default theme");
+    }
+    
     const [checked, setChecked] = React.useState<boolean>(theme === "light");
 
     const handleToggle = (newValue: boolean) => {
