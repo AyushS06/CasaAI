@@ -5,6 +5,7 @@ import { AuroraBackground } from '@/components/AuroraBackground'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
 import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
+import { HeroSectionOne } from '@/components/HeroSectionOne'
 import dynamic from 'next/dynamic'
 
 // Dynamic imports for better bundle splitting
@@ -48,7 +49,10 @@ export default function HomePage() {
                 Everything you need to operate and scale your property portfolio.
               </p>
             </div>
-            <PointerHighlightDemo />
+            <HeroSectionOne />
+            <div className="mt-16">
+              <PointerHighlightDemo />
+            </div>
           </div>
         </section>
 
