@@ -839,6 +839,9 @@ video {
 .aspect-\[85\/84\] {
   aspect-ratio: 85/84;
 }
+.aspect-\[425\/301\] {
+  aspect-ratio: 425/301;
+}
 .size-10 {
   width: 2.5rem;
   height: 2.5rem;

@@ -89,9 +89,9 @@ export function HeroSectionOne() {
         >
           <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
             <img
-              src="https://assets.aceternity.com/pro/aceternity-landing.webp"
+              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/CasaAI%20dashboard.png?token=GHSAT0AAAAAADAQ7WWW5B6VXDE67FQH4ICW2E2W23Q"
               alt="Landing page preview"
-              className="aspect-[16/9] h-auto w-full object-cover"
+              className="aspect-[425/301] h-auto w-full object-cover"
               height={1000}
               width={1000}
             />

@@ -223,10 +223,7 @@ export const MobileNavToggle = ({ isOpen, onClick }: { isOpen: boolean; onClick:
 
 export const NavbarLogo = () => {
   return (
-    <a href="#" className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
-      <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
-        <span className="text-primary-foreground font-bold text-xs">C</span>
-      </div>
+    <a href="https://www.casaai.org/" className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
       <span className="font-semibold text-black dark:text-white">CasaAI</span>
     </a>
   );
