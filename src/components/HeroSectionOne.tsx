@@ -49,10 +49,6 @@ export function HeroSectionOne() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          Use CasaAI today to buy, manage, and sell your properties.
-          <br>
-          </br>
-          Anytime & Anywhere.
         </motion.p>
         <motion.div
           initial={{

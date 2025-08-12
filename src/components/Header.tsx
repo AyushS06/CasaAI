@@ -6,6 +6,17 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import { DayNightSwitch } from "@/components/DayNightSwitch";
 
+// Smooth scroll function
+const smoothScrollTo = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
+
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
@@ -107,6 +118,21 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
+  const handleClick = (e: React.MouseEvent, item: { name: string; link: string }) => {
+    const isExternal = item.link.startsWith("http");
+    const isHashLink = item.link.startsWith("/#");
+    
+    if (!isExternal && isHashLink) {
+      e.preventDefault();
+      const elementId = item.link.replace("/#", "");
+      smoothScrollTo(elementId);
+    }
+    
+    if (onItemClick) {
+      onItemClick();
+    }
+  };
+
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
@@ -121,8 +147,8 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           <a
             key={`link-${idx}`}
             onMouseEnter={() => setHovered(idx)}
-            onClick={onItemClick}
-            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 rounded-full"
+            onClick={(e) => handleClick(e, item)}
+            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 rounded-full cursor-pointer"
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
@@ -139,8 +165,8 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           <a
             key={`link-${idx}`}
             onMouseEnter={() => setHovered(idx)}
-            onClick={onItemClick}
-            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 rounded-full"
+            onClick={(e) => handleClick(e, item)}
+            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 rounded-full cursor-pointer"
             href={item.link}
           >
             {hovered === idx && (
@@ -306,14 +332,26 @@ export const Header1 = () => {
         </MobileNavHeader>
         <MobileNavMenu isOpen={open} onClose={() => setOpen(false)}>
           <div className="flex w-full flex-col gap-2">
-            {items.map((item) =>
-              item.link.startsWith("http") ? (
+            {items.map((item) => {
+              const isExternal = item.link.startsWith("http");
+              const isHashLink = item.link.startsWith("/#");
+              
+              const handleMobileClick = (e: React.MouseEvent) => {
+                if (!isExternal && isHashLink) {
+                  e.preventDefault();
+                  const elementId = item.link.replace("/#", "");
+                  smoothScrollTo(elementId);
+                }
+                setOpen(false);
+              };
+              
+              return isExternal ? (
                 <a
                   key={item.name}
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full rounded-md px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300"
+                  className="block w-full rounded-md px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300 cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
                   {item.name}
@@ -322,13 +360,13 @@ export const Header1 = () => {
                 <a
                   key={item.name}
                   href={item.link}
-                  className="block w-full rounded-md px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300"
-                  onClick={() => setOpen(false)}
+                  className="block w-full rounded-md px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300 cursor-pointer"
+                  onClick={handleMobileClick}
                 >
                   {item.name}
                 </a>
-              )
-            )}
+              );
+            })}
             <div className="mt-2 grid grid-cols-2 gap-2 w-full">
               <NavbarButton href="/login" variant="secondary" className="w-full">Sign in</NavbarButton>
               <NavbarButton href="/signup" variant="gradient" className="w-full">Get started</NavbarButton>
