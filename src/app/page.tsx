@@ -49,10 +49,8 @@ export default function HomePage() {
                 Everything you need to operate and scale your property portfolio.
               </p>
             </div>
-            <HeroSectionOne />
-            <div className="mt-16">
-              <PointerHighlightDemo />
-            </div>
+            <HeroSectionOne/>
+            <PointerHighlightDemo />
           </div>
         </section>
 

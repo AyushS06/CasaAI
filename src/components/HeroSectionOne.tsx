@@ -89,7 +89,7 @@ export function HeroSectionOne() {
         >
           <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
             <img
-              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/CasaAI%20dashboard.png?token=GHSAT0AAAAAADAQ7WWXVYLFEOHUSZVQRXLO2E2XMNQ"
+              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/CasaAI%20dashboard.png?token=GHSAT0AAAAAADAQ7WWW7L5JTCRBNPYFMUBQ2E2XR6Q"
               alt="Landing page preview"
               className="aspect-[425/301] h-auto w-full object-cover"
               height={1000}
