@@ -38,7 +38,7 @@ export default function HomePage() {
             <div className="text-center mb-12 space-y-3">
               <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight">Product</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Everything you need to operate and scale your property portfolio.
+                Everything you need to manage and scale your property portfolio.
               </p>
             </div>
             <HeroSectionOne/>
