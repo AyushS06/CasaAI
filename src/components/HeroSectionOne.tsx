@@ -89,7 +89,7 @@ export function HeroSectionOne() {
         >
           <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
             <img
-              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/CasaAI%20dashboard.png?token=GHSAT0AAAAAADAQ7WWW5B6VXDE67FQH4ICW2E2W23Q"
+              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/CasaAI%20dashboard.png?token=GHSAT0AAAAAADAQ7WWXVYLFEOHUSZVQRXLO2E2XMNQ"
               alt="Landing page preview"
               className="aspect-[425/301] h-auto w-full object-cover"
               height={1000}
@@ -108,14 +108,13 @@ const Navbar = () => {
       <div className="flex items-center gap-2">
         <div className="w-full overflow-hidden rounded-xl">
             <img
-              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/logo.png?token=GHSAT0AAAAAADAQ7WWWKTWZRXSHYF4DDGXS2E2WQIQ"
-              alt="Logo"
-              className="aspect-[85/84] h-auto w-part object-cover"
-              height={38}
-              width={38}
+              // src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/logo.png?token=GHSAT0AAAAAADAQ7WWWKTWZRXSHYF4DDGXS2E2WQIQ"
+              // alt="Logo"
+              // className="aspect-[85/84] h-auto w-part object-cover"
+              // height={38}
+              // width={38}
             />
           </div>
-        <h1 className="text-base font-bold md:text-2xl">CasaAI</h1>
       </div>
     </nav>
   );
