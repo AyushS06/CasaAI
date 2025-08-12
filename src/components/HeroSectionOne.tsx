@@ -106,13 +106,13 @@ const Navbar = () => {
   return (
     <nav className="flex w-full items-center justify-between border-t border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
       <div className="flex items-center gap-2">
-        <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
+        <div className="w-full overflow-hidden rounded-xl">
             <img
-              src="https://assets.aceternity.com/pro/aceternity-landing.webp"
+              src="https://raw.githubusercontent.com/AyushS06/CasaAI/refs/heads/main/logo.png?token=GHSAT0AAAAAADAQ7WWWKTWZRXSHYF4DDGXS2E2WQIQ"
               alt="Logo"
-              className="aspect-[16/9] h-auto w-part object-cover"
-              height={50}
-              width={50}
+              className="aspect-[85/84] h-auto w-part object-cover"
+              height={38}
+              width={38}
             />
           </div>
         <h1 className="text-base font-bold md:text-2xl">CasaAI</h1>
