@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
 import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
 import { HeroSectionOne } from '@/components/HeroSectionOne'
+import { BookDemoButton } from '@/components/BookDemoButton'
 import dynamic from 'next/dynamic'
 
 // Dynamic imports for better bundle splitting
@@ -39,6 +40,7 @@ export default function HomePage() {
             </div>
             <HeroSectionOne/>
             <PointerHighlightDemo />
+            <BookDemoButton />
           </div>
         </section>
 

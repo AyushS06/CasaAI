@@ -18,7 +18,7 @@ export function HeroSectionOne() {
       </div>
       <div className="px-4 py-10 md:py-20">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold md:text-4xl lg:text-7xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text">
-          {"What is CasaAI?"
+          {"What     is     CasaAI?"
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -30,7 +30,7 @@ export function HeroSectionOne() {
                   delay: index * 0.1,
                   ease: "easeInOut",
                 }}
-                className="mr-2 inline-block"
+                className="mr-1 inline-block"
               >
                 {word}
               </motion.span>
@@ -63,11 +63,20 @@ export function HeroSectionOne() {
           }}
           className="relative z-10 mt-8 flex items-center justify-center"
         >
-          <Link href="https://calendly.com/ayushs217/30min" target="_blank" rel="noopener noreferrer">
-            <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
-              Book a Demo
-            </button>
-          </Link>
+          <button 
+            onClick={() => {
+              const dashboardElement = document.querySelector('[data-dashboard-image]');
+              if (dashboardElement) {
+                dashboardElement.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              }
+            }}
+            className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900"
+          >
+            Learn More
+          </button>
         </motion.div>
         <motion.div
           initial={{
@@ -84,7 +93,7 @@ export function HeroSectionOne() {
           }}
           className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
-          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
+          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700" data-dashboard-image>
             <img
               src="/CasaAI dashboard.png"
               alt="CasaAI Dashboard Preview"
