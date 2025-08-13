@@ -234,11 +234,12 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }: MobileNa
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
           className={cn(
-            "fixed inset-x-2 top-20 bottom-2 z-50 flex w-auto flex-col items-start justify-start gap-3 rounded-xl bg-white px-4 py-6 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950 overflow-y-auto",
+            "fixed inset-x-4 top-16 z-50 flex w-auto flex-col items-start justify-start gap-3 rounded-xl bg-white/95 backdrop-blur-md px-6 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950/95 max-h-[80vh] overflow-y-auto",
             className
           )}
           role="dialog"
@@ -252,10 +253,18 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }: MobileNa
 };
 
 export const MobileNavToggle = ({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) => {
-  return isOpen ? (
-    <IconX className="text-black dark:text-white" onClick={onClick} />
-  ) : (
-    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+  return (
+    <button
+      onClick={onClick}
+      className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+    >
+      {isOpen ? (
+        <IconX className="h-6 w-6 text-black dark:text-white" />
+      ) : (
+        <IconMenu2 className="h-6 w-6 text-black dark:text-white" />
+      )}
+    </button>
   );
 };
 
@@ -363,7 +372,7 @@ export const Header1 = () => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full rounded-md px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300 cursor-pointer"
+                  className="block w-full rounded-lg px-4 py-4 text-base font-medium text-neutral-700 dark:text-neutral-300 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {item.name}
@@ -372,16 +381,16 @@ export const Header1 = () => {
                 <a
                   key={item.name}
                   href={item.link}
-                  className="block w-full rounded-md px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300 cursor-pointer"
+                  className="block w-full rounded-lg px-4 py-4 text-base font-medium text-neutral-700 dark:text-neutral-300 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                   onClick={handleMobileClick}
                 >
                   {item.name}
                 </a>
               );
             })}
-            <div className="mt-2 grid grid-cols-2 gap-2 w-full">
-              <NavbarButton href="/login" variant="secondary" className="w-full">Sign in</NavbarButton>
-              <NavbarButton href="/signup" variant="gradient" className="w-full">Get started</NavbarButton>
+            <div className="mt-4 flex flex-col gap-3 w-full">
+              <NavbarButton href="/login" variant="secondary" className="w-full py-3 text-base">Sign in</NavbarButton>
+              <NavbarButton href="/signup" variant="gradient" className="w-full py-3 text-base">Get started</NavbarButton>
             </div>
           </div>
         </MobileNavMenu>
