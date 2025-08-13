@@ -1,3 +1,6 @@
+"use client";
+
+import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Header1 } from '@/components/Header'
@@ -15,6 +18,25 @@ const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
 })
 
 export default function HomePage() {
+  // Handle hash navigation on page load
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      if (hash) {
+        const elementId = hash.replace('#', '');
+        setTimeout(() => {
+          const element = document.getElementById(elementId);
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Animated Background */}
@@ -41,6 +63,32 @@ export default function HomePage() {
             <HeroSectionOne/>
             <PointerHighlightDemo />
             <BookDemoButton />
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section id="features" className="scroll-mt-28">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 space-y-3">
+              <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight">Features</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Discover the powerful features that make CasaAI the ultimate property management solution.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="text-center p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                <h3 className="text-xl font-semibold mb-4">AI-Powered Insights</h3>
+                <p className="text-muted-foreground">Get intelligent recommendations and insights to optimize your property portfolio.</p>
+              </div>
+              <div className="text-center p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                <h3 className="text-xl font-semibold mb-4">Automated Workflows</h3>
+                <p className="text-muted-foreground">Streamline your property management with automated processes and workflows.</p>
+              </div>
+              <div className="text-center p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                <h3 className="text-xl font-semibold mb-4">Real-time Analytics</h3>
+                <p className="text-muted-foreground">Monitor your properties with comprehensive real-time analytics and reporting.</p>
+              </div>
+            </div>
           </div>
         </section>
 

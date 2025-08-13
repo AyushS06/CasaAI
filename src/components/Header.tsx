@@ -17,6 +17,18 @@ const smoothScrollTo = (elementId: string) => {
   }
 };
 
+// Navigate to home page and scroll to section
+const navigateToHomeSection = (elementId: string) => {
+  // Check if we're already on the home page
+  if (window.location.pathname === '/') {
+    // If on home page, just scroll to the section
+    smoothScrollTo(elementId);
+  } else {
+    // If on another page, navigate to home page with hash
+    window.location.href = `/#${elementId}`;
+  }
+};
+
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
@@ -125,7 +137,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     if (!isExternal && isHashLink) {
       e.preventDefault();
       const elementId = item.link.replace("/#", "");
-      smoothScrollTo(elementId);
+      navigateToHomeSection(elementId);
     }
     
     if (onItemClick) {
@@ -340,7 +352,7 @@ export const Header1 = () => {
                 if (!isExternal && isHashLink) {
                   e.preventDefault();
                   const elementId = item.link.replace("/#", "");
-                  smoothScrollTo(elementId);
+                  navigateToHomeSection(elementId);
                 }
                 setOpen(false);
               };

@@ -17,57 +17,74 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const plans = [
   {
-    id: 'hobby',
-    name: 'Hobby',
+    id: 'Apartment',
+    name: 'Apartment',
     price: {
-      monthly: 'Free forever',
-      yearly: 'Free forever',
+      monthly: 0,
+      yearly: 0,
     },
     description:
-      'The perfect starting place for your web app or personal project.',
+      'Perfect for anyone starting out in real estate.',
     features: [
-      '50 API calls / month',
-      '60 second checks',
-      'Single-user account',
-      '5 monitors',
-      'Basic email support',
+      'Manage 1 property',
+      'Send 1 investment proposal',
+      'List 1 property',
+      'Add up to 4 tenants',
+      'Email support',
     ],
-    cta: 'Get started for free',
+    cta: 'Get Started',
   },
   {
-    id: 'pro',
-    name: 'Pro',
+    id: 'Condo',
+    name: 'Condo',
     price: {
-      monthly: 90,
-      yearly: 75,
+      monthly: 5,
+      yearly: 48,
     },
-    description: 'Everything you need to build and scale your business.',
+    description: 'Made for anyone who wants to grow their real estate portfolio.',
     features: [
-      'Unlimited API calls',
-      '30 second checks',
-      'Multi-user account',
-      '10 monitors',
-      'Priority email support',
+      'Manage up to 3 properties',
+      'Send 3 investment proposals',
+      'List 3 properties',
+      'Add up to 12 tenants',
+      'Custom metrics',
     ],
     cta: 'Subscribe to Pro',
     popular: true,
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
+    id: 'House',
+    name: 'House',
     price: {
-      monthly: 'Get in touch for pricing',
-      yearly: 'Get in touch for pricing',
+      monthly: 10,
+      yearly: 80,
     },
-    description: 'Critical security, performance, observability and support.',
+    description: 'Designed for enterprise large scale property portfolios.',
     features: [
-      'You can DDOS our API.',
-      'Nano-second checks.',
-      'Invite your extended family.',
-      'Unlimited monitors.',
-      "We'll sit on your desk.",
+      'Manage up to 5 properties',
+      'Send 5 investment proposals',
+      'List 5 properties',
+      'Add up to 20 tenants',
+      'Advanced support',
     ],
-    cta: 'Contact us',
+    cta: 'Start Business Plan',
+  },
+  {
+    id: 'Mansion',
+    name: 'Mansion',
+    price: {
+      monthly: 15,
+      yearly: 144,
+    },
+    description: 'Ideal for companies with multiple properties.',
+    features: [
+      'Unlimited properties',
+      'Unlimited proposals',
+      'Unlimited listings',
+      'Unlimited tenants',
+      'Advanced AI insights',
+    ],
+    cta: 'Contact Sales',
   },
 ];
 
@@ -92,7 +109,7 @@ const Example = () => {
             </TabsTrigger>
           </TabsList>
         </Tabs>
-        <div className="mt-8 grid w-full max-w-4xl gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid w-full max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan) => (
             <Card
               className={cn(
@@ -112,26 +129,28 @@ const Example = () => {
                 </CardTitle>
                 <CardDescription>
                   <p>{plan.description}</p>
-                  {typeof plan.price[frequency as keyof typeof plan.price] ===
-                  'number' ? (
-                    <NumberFlow
-                      className="font-medium text-foreground"
-                      format={{
-                        style: 'currency',
-                        currency: 'USD',
-                        maximumFractionDigits: 0,
-                      }}
-                      suffix={`/month, billed ${frequency}.`}
-                      value={
-                        plan.price[
-                          frequency as keyof typeof plan.price
-                        ] as number
-                      }
-                    />
+                  <NumberFlow
+                    className="font-medium text-foreground"
+                    format={{
+                      style: 'currency',
+                      currency: 'USD',
+                      maximumFractionDigits: 0,
+                    }}
+                    suffix={`/month, billed ${frequency}.`}
+                    value={
+                      plan.price[
+                        frequency as keyof typeof plan.price
+                      ] as number
+                    }
+                  />
+                  {plan.id === 'Apartment' ? (
+                    <p className="mt-2 text-sm text-blue-600 dark:text-white font-medium">
+                      Includes
+                    </p>
                   ) : (
-                    <span className="font-medium text-foreground">
-                      {plan.price[frequency as keyof typeof plan.price]}.
-                    </span>
+                    <p className="mt-2 text-sm text-blue-600 dark:text-white font-medium">
+                      Everything in {plan.id === 'Condo' ? 'Apartment' : plan.id === 'House' ? 'Condo' : 'House'} plan &
+                    </p>
                   )}
                 </CardDescription>
               </CardHeader>
@@ -141,7 +160,7 @@ const Example = () => {
                     className="flex items-center gap-2 text-muted-foreground text-sm"
                     key={index}
                   >
-                    <BadgeCheck className="h-4 w-4" />
+                    <BadgeCheck className="h-4 w-4 text-green-500" />
                     {feature}
                   </div>
                 ))}
