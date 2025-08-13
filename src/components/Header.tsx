@@ -315,7 +315,7 @@ export const Header1 = () => {
 
           <div className="relative z-20 flex items-center gap-3">
             <NavbarButton href="/login" variant="secondary">Sign in</NavbarButton>
-            <NavbarButton href="/signup" variant="gradient">Get started</NavbarButton>
+            <NavbarButton href="/signup" variant="gradient">Get started for free</NavbarButton>
             <DayNightSwitch />
           </div>
         </div>
