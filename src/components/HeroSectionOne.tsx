@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { CasaAIGradientText } from "./CasaAIGradientText";
+import { CasaAILinkPreview } from "./CasaAILinkPreview";
 
 export function HeroSectionOne() {
   return (
@@ -19,7 +19,7 @@ export function HeroSectionOne() {
       </div>
       <div className="px-4 py-10 md:py-20">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center">
-          <CasaAIGradientText />
+          <CasaAILinkPreview />
         </h1>
         <motion.p
           initial={{

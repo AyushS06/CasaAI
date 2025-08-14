@@ -1,16 +1,14 @@
 "use client";
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { Header1 } from '@/components/Header'
 import { AuroraBackground } from '@/components/AuroraBackground'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
 import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
 import { HeroSectionOne } from '@/components/HeroSectionOne'
 import { BookDemoButton } from '@/components/BookDemoButton'
 import dynamic from 'next/dynamic'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Dynamic imports for better bundle splitting
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
