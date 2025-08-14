@@ -6,6 +6,7 @@ import { AuroraBackground } from '@/components/AuroraBackground'
 import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
 import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
 import { HeroSectionOne } from '@/components/HeroSectionOne'
+import { CasaAIFeatures } from '@/components/CasaAIFeatures'
 import dynamic from 'next/dynamic'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -71,20 +72,7 @@ export default function HomePage() {
                 Discover the powerful features that make CasaAI the ultimate property management solution.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="text-center p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-                <h3 className="text-xl font-semibold mb-4">AI-Powered Insights</h3>
-                <p className="text-muted-foreground">Get intelligent recommendations and insights to optimize your property portfolio.</p>
-              </div>
-              <div className="text-center p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-                <h3 className="text-xl font-semibold mb-4">Automated Workflows</h3>
-                <p className="text-muted-foreground">Streamline your property management with automated processes and workflows.</p>
-              </div>
-              <div className="text-center p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-                <h3 className="text-xl font-semibold mb-4">Real-time Analytics</h3>
-                <p className="text-muted-foreground">Monitor your properties with comprehensive real-time analytics and reporting.</p>
-              </div>
-            </div>
+            <CasaAIFeatures />
           </div>
         </section>
 
