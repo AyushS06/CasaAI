@@ -35,34 +35,7 @@ export function HeroSectionOne() {
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
         </motion.p>
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1,
-          }}
-          className="relative z-10 mt-8 flex items-center justify-center"
-        >
-          <button 
-            onClick={() => {
-              const dashboardElement = document.querySelector('[data-dashboard-image]');
-              if (dashboardElement) {
-                dashboardElement.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start',
-                });
-              }
-            }}
-            className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900"
-          >
-            Learn More
-          </button>
-        </motion.div>
+
         <motion.div
           initial={{
             opacity: 0,

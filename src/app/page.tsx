@@ -6,7 +6,6 @@ import { AuroraBackground } from '@/components/AuroraBackground'
 import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
 import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
 import { HeroSectionOne } from '@/components/HeroSectionOne'
-import { BookDemoButton } from '@/components/BookDemoButton'
 import dynamic from 'next/dynamic'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -60,7 +59,6 @@ export default function HomePage() {
             </div>
             <HeroSectionOne/>
             <PointerHighlightDemo />
-            <BookDemoButton />
           </div>
         </section>
 

@@ -154,17 +154,10 @@ export function CasaAILinkPreview() {
   return (
     <div className="flex justify-center items-center flex-col px-4">
       <p className="text-neutral-600 dark:text-blue-300 text-xl md:text-3xl max-w-4xl mx-auto text-center">
-        <LinkPreview url="https://www.casaai.org/" className="font-bold">
-          CasaAI
+        <LinkPreview url="https://calendly.com/ayushs217/30min" className="font-bold">
+          Book a demo 
         </LinkPreview>{" "}
-        saves you hours of work, in a matter of minutes.
-      </p>
-      <br></br>
-      <p className="text-neutral-600 dark:text-red-300 text-xl md:text-3xl max-w-4xl mx-auto text-center">
-        <LinkPreview url="https://www.casaai.org/signup" className="font-bold">
-          Sign up
-        </LinkPreview>{" "}
-        to learn how we can consolidate and automate your property management operations.
+        to see how we consolidate and automate the entire property management lifecycle!
       </p>
     </div>
   );
