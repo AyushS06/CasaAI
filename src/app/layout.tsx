@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'CasaAI - Buy, manage, & sell properties anytime & anywhere',
+  title: 'CasaAI',
   description: 'AI-powered property management platform that saves you hours of work in a matter of minutes. Buy, manage, and sell properties with CasaAI.',
   openGraph: {
     title: 'CasaAI - Buy, manage, & sell properties anytime & anywhere',
