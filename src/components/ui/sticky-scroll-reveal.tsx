@@ -20,7 +20,7 @@ export const StickyScroll = ({
   const { scrollYProgress } = useScroll({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
     container: ref,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
   const cardLength = content.length;
 
@@ -42,7 +42,7 @@ export const StickyScroll = ({
   // Remove background colors since we don't want the container to change color
   const linearGradients = [
     "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
+    "linear-gradient(to bottom right,rgb(172, 154, 163), #6366f1)", // pink-500 to indigo-500
     "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
   ];
 
@@ -56,37 +56,38 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      className="relative flex h-[80rem] justify-center space-x-10 overflow-y-auto scrollbar-hide"
+      className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto scrollbar-hide"
       ref={ref}
     >
       <div className="relative flex items-start px-4">
         <div className="max-w-2xl">
           {content.map((item, index) => (
-            <div key={item.title + index} className="my-40 flex items-center min-h-[20rem]">
-              <div>
+            <div key={item.title + index} className="my-48 flex items-center min-h-[25rem]">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: activeCard === index ? 1 : 0.3,
+                  y: activeCard === index ? 0 : 20,
+                }}
+                transition={{
+                  duration: 1,
+                  ease: "easeOut",
+                }}
+              >
                 <motion.h2
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: activeCard === index ? 1 : 0.3,
-                  }}
                   className="text-2xl lg:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
                 >
                   {item.title}
                 </motion.h2>
                 <motion.p
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: activeCard === index ? 1 : 0.3,
-                  }}
                   className="text-muted-foreground mt-4 max-w-md text-base"
                 >
                   {item.description}
                 </motion.p>
-              </div>
+              </motion.div>
             </div>
           ))}
           <div className="h-60" />
