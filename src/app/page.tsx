@@ -7,12 +7,16 @@ import { TextGenerateEffectDemo } from '@/components/TextGenerateEffectDemo'
 import { PointerHighlightDemo } from '@/components/PointerHighlightDemo'
 import { HeroSectionOne } from '@/components/HeroSectionOne'
 import { CasaAIFeatures } from '@/components/CasaAIFeatures'
-import dynamic from 'next/dynamic'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import dynamic from 'next/dynamic'
 
 // Dynamic imports for better bundle splitting
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
   loading: () => <div className="animate-pulse">Loading FAQ...</div>
+})
+
+const GlobalFooter = dynamic(() => import('@/components/sections/GlobalFooter'), {
+  loading: () => <div className="animate-pulse">Loading footer...</div>
 })
 
 export default function HomePage() {
@@ -77,7 +81,7 @@ export default function HomePage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="scroll-mt-28">
+        <section id="faq" className="scroll-mt-28 mt-32">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 space-y-3">
               <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight">Frequently Asked Questions</h2>
@@ -91,6 +95,13 @@ export default function HomePage() {
 
         {/* Pricing moved to dedicated page: /pricing */}
       </main>
+
+      {/* Footer Section */}
+      <footer className="mt-32 mb-8">
+        <GlobalFooter />
+      </footer>
+
+      <SpeedInsights />
     </div>
   )
 } 
