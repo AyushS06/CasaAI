@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { DayNightSwitch } from "@/components/DayNightSwitch";
 
 // Smooth scroll function
@@ -315,7 +315,6 @@ export const Header1 = () => {
   const [open, setOpen] = useState(false);
 
   const items = [
-    { name: "Home", link: "/#home" },
     { name: "Product", link: "/#product" },
     { name: "Features", link: "/#features" },
     { name: "FAQ", link: "/#faq" },
